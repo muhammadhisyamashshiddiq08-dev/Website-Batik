@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Batik Nusantara | Keindahan Batik Indonesia</title>
+
+  <!-- Meta Tags -->
+  <meta name="description" content="Batik Nusantara - Menyediakan batik khas Indonesia dengan motif tradisional yang dipadukan dengan desain modern dan elegan.">
+  <meta name="keywords" content="batik, batik nusantara, batik indonesia, batik modern, batik tradisional">
+
+  <!-- Elfsight WhatsApp Chat -->
+  <script src="https://elfsightcdn.com/platform.js" async defer></script>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= PRELOADER ================= -->
+<div id="preloader">
+  <div class="loader"></div>
+</div>
+
+<!-- ================= NOTIFIKASI CHAT ================= -->
+<div id="chatNotification" class="chat-notification">
+  <div class="chat-notification-content">
+    <div class="chat-notification-avatar">
+      <img src="assets/logo.jpg" alt="CS Batik Nusantara" onerror="this.src='https://placehold.co/50x50/8B1A1A/ffffff?text=BN'">
+    </div>
+    <div class="chat-notification-text">
+      <div class="chat-notification-header">
+        <span class="chat-notification-name">CS Batik Nusantara</span>
+        <span class="chat-notification-time">Baru saja</span>
+      </div>
+      <p class="chat-notification-message">👋 Halo! Ada yang bisa kami bantu? Silakan tanyakan tentang produk batik kami.</p>
+      <div class="chat-notification-actions">
+        <button class="chat-notification-btn chat-notification-btn-reply" onclick="openWhatsApp()">
+          <i class="bi bi-reply-fill"></i> Balas
+        </button>
+        <button class="chat-notification-btn chat-notification-btn-close" onclick="closeChatNotification()">
+          <i class="bi bi-x-lg"></i> Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WHATSAPP WIDGET ================= -->
+<div id="whatsapp-widget-container">
+  <div class="elfsight-app-e889a1bb-dd6b-4230-91c2-865bcbadecd2" data-elfsight-app-lazy></div>
+</div>
+
+<!-- Fallback WhatsApp -->
+<div id="whatsapp-fallback">
+  <a href="https://wa.me/6288219687504" target="_blank" class="whatsapp-fallback-btn">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+</div>
+
+<!-- ================= SEARCH OVERLAY ================= -->
+<div id="searchOverlay" class="search-overlay">
+  <div class="search-overlay-content">
+    <div class="search-header">
+      <h3><i class="bi bi-search text-warning"></i> Cari Produk Batik</h3>
+      <button class="btn-close-search" onclick="toggleSearch()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="search-input-wrapper">
+      <input type="text" id="searchInput" class="search-input" placeholder="Cari batik... (contoh: parang, kawung, mega mendung)" onkeyup="searchProducts()">
+      <button class="search-submit-btn" onclick="searchProducts()">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top batik-navbar" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+      <img src="assets/logo.jpg" alt="Logo Batik Nusantara" class="brand-logo" onerror="this.src='https://placehold.co/50x50/8B1A1A/ffffff?text=BN'">
+      <span class="brand-text">Batik<span class="brand-highlight">Nusantara</span></span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#menuNavbar" aria-controls="menuNavbar" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuNavbar">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#koleksi">Koleksi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+        <li class="nav-item d-none d-lg-block">
+          <button class="btn btn-search btn-sm rounded-pill px-3 ms-1 fw-bold" onclick="toggleSearch()" aria-label="Cari Produk">
+            <i class="bi bi-search"></i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <a href="https://wa.me/6288219687504" target="_blank" class="btn btn-warning btn-sm rounded-pill px-3 ms-1 fw-bold">
+            <i class="bi bi-whatsapp me-1"></i> Pesan sekarang
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ================= HERO WITH PARALLAX ================= -->
+<section id="home" class="hero-section parallax-section">
+  <div class="parallax-bg" id="parallaxBg"></div>
+  <div class="parallax-overlay"></div>
+  <div class="hero-overlay"></div>
+  
+  <!-- Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+  
+  <div class="hero-content">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12" data-aos="fade-up" data-aos-duration="1000">
+          <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+              <!-- Slide 1 -->
+              <div class="carousel-item active">
+                <div class="hero-slide-content text-center">
+                  <span class="hero-badge">✦ Batik Nusantara</span>
+                  <h1 class="hero-title">Keindahan <br><span class="text-warning">Batik Nusantara</span></h1>
+                  <p class="hero-subtitle">Temukan keindahan batik Indonesia dengan motif khas Nusantara yang dipadukan dengan desain modern dan elegan.</p>
+                  <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
+                    <a href="#koleksi" class="btn btn-warning btn-lg rounded-pill px-5 fw-bold">
+                      <i class="bi bi-grid-3x3-gap-fill me-2"></i>Lihat Koleksi
+                    </a>
+                    <a href="https://wa.me/6288219687504" target="_blank" class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold">
+                      <i class="bi bi-whatsapp me-2"></i>Pesan Sekarang
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="carousel-item">
+                <div class="hero-slide-content text-center">
+                  <span class="hero-badge">✦ Batik Berkualitas</span>
+                  <h1 class="hero-title">Motif <span class="text-warning">Tradisional</span> <br>dengan Sentuhan Modern</h1>
+                  <p class="hero-subtitle">Setiap helai batik kami dibuat dengan detail dan kualitas terbaik untuk Anda.</p>
+                  <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
+                    <a href="#koleksi" class="btn btn-warning btn-lg rounded-pill px-5 fw-bold">
+                      <i class="bi bi-grid-3x3-gap-fill me-2"></i>Lihat Koleksi
+                    </a>
+                    <a href="https://wa.me/6288219687504" target="_blank" class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold">
+                      <i class="bi bi-whatsapp me-2"></i>Pesan Sekarang
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="carousel-item">
+                <div class="hero-slide-content text-center">
+                  <span class="hero-badge">✦ Warisan Budaya</span>
+                  <h1 class="hero-title">Bangga <span class="text-warning">Berbatik</span> <br>Indonesia</h1>
+                  <p class="hero-subtitle">Kenakan batik sebagai identitas budaya Indonesia yang penuh makna dan keindahan.</p>
+                  <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
+                    <a href="#koleksi" class="btn btn-warning btn-lg rounded-pill px-5 fw-bold">
+                      <i class="bi bi-grid-3x3-gap-fill me-2"></i>Lihat Koleksi
+                    </a>
+                    <a href="https://wa.me/6288219687504" target="_blank" class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold">
+                      <i class="bi bi-whatsapp me-2"></i>Pesan Sekarang
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-item">
+          <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+          <div class="stat-number" data-count="5000">0</div>
+          <div class="stat-label">Pelanggan Puas</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-item">
+          <div class="stat-icon"><i class="bi bi-box-seam-fill"></i></div>
+          <div class="stat-number" data-count="1500">0</div>
+          <div class="stat-label">Produk Terjual</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-item">
+          <div class="stat-icon"><i class="bi bi-star-fill"></i></div>
+          <div class="stat-number" data-count="98">0</div>
+          <div class="stat-label">% Kepuasan</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="stat-item">
+          <div class="stat-icon"><i class="bi bi-award-fill"></i></div>
+          <div class="stat-number" data-count="10">0</div>
+          <div class="stat-label">Tahun Berdiri</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TENTANG ================= -->
+<section id="tentang" class="section-pad about-section">
+  <div class="container">
+    <div class="section-title" data-aos="fade-down">
+      <span class="section-tag">TENTANG KAMI</span>
+      <h2>Melestarikan <span class="text-warning">Warisan Budaya</span> Indonesia</h2>
+    </div>
+
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="about-image-wrapper">
+          <img src="assets/about.jpg" class="img-fluid rounded-4 about-img" alt="Tentang Batik Nusantara" onerror="this.src='https://placehold.co/600x500/8B1A1A/ffffff?text=Batik+Nusantara'">
+          <div class="about-experience">
+            <span class="number">10+</span>
+            <span class="text">Tahun<br>Pengalaman</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="about-content">
+          <h3>Melestarikan Warisan Budaya Indonesia</h3>
+          <p class="about-text">Batik Nusantara menghadirkan berbagai pilihan batik khas Indonesia dengan motif tradisional yang dipadukan dengan sentuhan modern.</p>
+          <p class="about-text">Kami ingin memperkenalkan keindahan budaya Indonesia melalui produk batik yang elegan dan berkualitas.</p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-sm-4">
+              <div class="about-feature">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>Motif Autentik</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="about-feature">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>Kualitas Premium</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="about-feature">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>Elegan & Modern</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="#koleksi" class="btn btn-warning btn-lg rounded-pill px-5 mt-4 fw-bold">
+            <i class="bi bi-eye me-2"></i>Lihat Koleksi
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KATEGORI ================= -->
+<section id="kategori" class="section-pad kategori-section">
+  <div class="container">
+    <div class="section-title" data-aos="fade-down">
+      <span class="section-tag">KATEGORI</span>
+      <h2>Temukan Batik Sesuai <span class="text-warning">Gaya & Kebutuhan</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="flip-up" data-aos-delay="100">
+        <div class="kategori-card">
+          <div class="kategori-image-wrapper">
+            <img src="assets/kategori-pria.jpg" alt="Batik Pria" class="kategori-img" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Batik+Pria'">
+            <div class="kategori-overlay">
+              <i class="bi bi-person-arms-up"></i>
+              <h4>Batik Pria</h4>
+              <p>Koleksi batik pria dengan motif maskulin dan elegan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="flip-up" data-aos-delay="200">
+        <div class="kategori-card">
+          <div class="kategori-image-wrapper">
+            <img src="assets/kategori-wanita.jpg" alt="Batik Wanita" class="kategori-img" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Batik+Wanita'">
+            <div class="kategori-overlay">
+              <i class="bi bi-person"></i>
+              <h4>Batik Wanita</h4>
+              <p>Koleksi batik wanita dengan motif cantik dan anggun.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="flip-up" data-aos-delay="300">
+        <div class="kategori-card">
+          <div class="kategori-image-wrapper">
+            <img src="assets/kategori-tradisional.jpg" alt="Batik Tradisional" class="kategori-img" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Batik+Tradisional'">
+            <div class="kategori-overlay">
+              <i class="bi bi-tree"></i>
+              <h4>Batik Tradisional</h4>
+              <p>Koleksi batik tradisional dengan motif khas Nusantara.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KOLEKSI ================= -->
+<section id="koleksi" class="section-pad koleksi-section">
+  <div class="container">
+    <div class="section-title" data-aos="fade-down">
+      <span class="section-tag">KOLEKSI BATIK</span>
+      <h2>Pilihan Batik <span class="text-warning">Khas Nusantara</span></h2>
+      <p>Temukan batik favorit Anda dari koleksi terbaik kami.</p>
+    </div>
+
+    <div class="filter-container" data-aos="fade-up" data-aos-delay="100">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all" onclick="filterProducts('all')">
+          <i class="bi bi-grid-3x3-gap-fill me-1"></i> Semua
+        </button>
+        <button class="filter-btn" data-filter="pria" onclick="filterProducts('pria')">
+          <i class="bi bi-person-arms-up me-1"></i> Batik Pria
+        </button>
+        <button class="filter-btn" data-filter="wanita" onclick="filterProducts('wanita')">
+          <i class="bi bi-person me-1"></i> Batik Wanita
+        </button>
+        <button class="filter-btn" data-filter="tradisional" onclick="filterProducts('tradisional')">
+          <i class="bi bi-tree me-1"></i> Batik Tradisional
+        </button>
+      </div>
+    </div>
+
+    <div class="row g-4" id="productContainer">
+      <!-- Produk 1 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="pria" data-aos="flip-up" data-aos-delay="100">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batikparang.jpg" class="card-img-top produk-img" alt="Batik Parang Klasik" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Parang'">
+            <span class="produk-badge">Best Seller</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Pria</span>
+            <h5 class="card-title">Batik Parang Klasik</h5>
+            <p class="card-text">Batik dengan motif tradisional yang elegan dan khas Nusantara.</p>
+            <div class="produk-price">Rp350.000</div>
+            <button onclick="showProductDetail(1)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 2 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="wanita" data-aos="flip-up" data-aos-delay="200">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batikkawung.jpg" class="card-img-top produk-img" alt="Batik Kawung Elegan" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Kawung'">
+            <span class="produk-badge">New</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Wanita</span>
+            <h5 class="card-title">Batik Kawung Elegan</h5>
+            <p class="card-text">Motif tradisional yang memiliki bentuk khas dan tampilan yang elegan.</p>
+            <div class="produk-price">Rp400.000</div>
+            <button onclick="showProductDetail(2)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 3 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="tradisional" data-aos="flip-up" data-aos-delay="300">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batikmega.jpg" class="card-img-top produk-img" alt="Batik Mega Mendung" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Mega'">
+            <span class="produk-badge">Populer</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Tradisional</span>
+            <h5 class="card-title">Batik Mega Mendung</h5>
+            <p class="card-text">Motif khas Cirebon dengan karakter awan yang unik dan menarik.</p>
+            <div class="produk-price">Rp450.000</div>
+            <button onclick="showProductDetail(3)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 4 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="pria" data-aos="flip-up" data-aos-delay="400">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batikpriamodern.jpg" class="card-img-top produk-img" alt="Batik Modern Pria" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Modern'">
+            <span class="produk-badge">Modern</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Pria</span>
+            <h5 class="card-title">Batik Modern Pria</h5>
+            <p class="card-text">Perpaduan motif klasik dengan sentuhan modern yang elegan.</p>
+            <div class="produk-price">Rp380.000</div>
+            <button onclick="showProductDetail(4)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 5 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="wanita" data-aos="flip-up" data-aos-delay="500">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batikceplok.jpg" class="card-img-top produk-img" alt="Batik Ceplok" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Ceplok'">
+            <span class="produk-badge">Elegant</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Wanita</span>
+            <h5 class="card-title">Batik Ceplok</h5>
+            <p class="card-text">Motif ceplok dengan filosofi kesatuan dan keharmonisan.</p>
+            <div class="produk-price">Rp420.000</div>
+            <button onclick="showProductDetail(5)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 6 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="tradisional" data-aos="flip-up" data-aos-delay="600">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batiklasem.jpg" class="card-img-top produk-img" alt="Batik Lasem" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Lasem'">
+            <span class="produk-badge">Klasik</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Tradisional</span>
+            <h5 class="card-title">Batik Lasem</h5>
+            <p class="card-text">Batik Lasem dengan motif khas pesisir yang penuh warna.</p>
+            <div class="produk-price">Rp480.000</div>
+            <button onclick="showProductDetail(6)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 7 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="pria" data-aos="flip-up" data-aos-delay="700">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batiksido.jpg" class="card-img-top produk-img" alt="Batik Sido Mukti" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Sido'">
+            <span class="produk-badge">Premium</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Pria</span>
+            <h5 class="card-title">Batik Sido Mukti</h5>
+            <p class="card-text">Motif Sido Mukti melambangkan kemakmuran dan kebahagiaan.</p>
+            <div class="produk-price">Rp500.000</div>
+            <button onclick="showProductDetail(7)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 8 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="wanita" data-aos="flip-up" data-aos-delay="800">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batiktujuhrupa.jpg" class="card-img-top produk-img" alt="Batik Tujuh Rupa" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Tujuh'">
+            <span class="produk-badge">Cantik</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Wanita</span>
+            <h5 class="card-title">Batik Tujuh Rupa</h5>
+            <p class="card-text">Motif tujuh rupa dari Pekalongan dengan warna-warna cerah.</p>
+            <div class="produk-price">Rp430.000</div>
+            <button onclick="showProductDetail(8)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 9 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="tradisional" data-aos="flip-up" data-aos-delay="900">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batiksogan.jpg" class="card-img-top produk-img" alt="Batik Sogan" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Sogan'">
+            <span class="produk-badge">Otentik</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Tradisional</span>
+            <h5 class="card-title">Batik Sogan</h5>
+            <p class="card-text">Batik Sogan khas Solo dengan warna coklat alami yang elegan.</p>
+            <div class="produk-price">Rp460.000</div>
+            <button onclick="showProductDetail(9)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 10 -->
+      <div class="col-md-6 col-lg-4 product-item" data-category="pria" data-aos="flip-up" data-aos-delay="1000">
+        <div class="card produk-card h-100">
+          <div class="produk-image-wrapper">
+            <img src="assets/batikkeraton.jpg" class="card-img-top produk-img" alt="Batik Keraton" onerror="this.src='https://placehold.co/400x400/8B1A1A/ffffff?text=Batik+Keraton'">
+            <span class="produk-badge">Eksklusif</span>
+          </div>
+          <div class="card-body text-center">
+            <span class="produk-category">Batik Pria</span>
+            <h5 class="card-title">Batik Keraton</h5>
+            <p class="card-text">Motif klasik keraton dengan filosofi kebijaksanaan.</p>
+            <div class="produk-price">Rp550.000</div>
+            <button onclick="showProductDetail(10)" class="btn btn-outline-warning rounded-pill px-4 fw-bold">
+              <i class="bi bi-eye me-1"></i>Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERI WITH PARALLAX BACKGROUND ================= -->
+<section id="galeri" class="section-pad gallery-section">
+  <!-- Parallax Background Motif Batik -->
+  <div class="gallery-parallax-bg" id="galleryParallaxBg"></div>
+  <div class="gallery-parallax-overlay"></div>
+  <div class="gallery-pattern"></div>
+  
+  <div class="container gallery-content-wrapper">
+    <div class="section-title" data-aos="fade-down">
+      <span class="section-tag">GALERI</span>
+      <h2>Jejak <span class="text-warning">Karya Batik</span></h2>
+      <p>Momen proses pembuatan karya batik dari pengrajin kami.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="gallery-card">
+          <img src="assets/gallery1.jpg" class="img-fluid" alt="Galeri Batik" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Galeri'">
+          <div class="gallery-overlay">
+            <i class="bi bi-image"></i>
+            <span>Batik Parang</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="gallery-card">
+          <img src="assets/gallery2.jpg" class="img-fluid" alt="Galeri Batik" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Galeri'">
+          <div class="gallery-overlay">
+            <i class="bi bi-image"></i>
+            <span>Batik Kawung</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="gallery-card">
+          <img src="assets/gallery3.jpg" class="img-fluid" alt="Galeri Batik" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Galeri'">
+          <div class="gallery-overlay">
+            <i class="bi bi-image"></i>
+            <span>Batik Mega Mendung</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="400">
+        <div class="gallery-card">
+          <img src="assets/gallery4.jpg" class="img-fluid" alt="Galeri Batik" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Galeri'">
+          <div class="gallery-overlay">
+            <i class="bi bi-image"></i>
+            <span>Batik Modern</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="500">
+        <div class="gallery-card">
+          <img src="assets/gallery5.jpg" class="img-fluid" alt="Galeri Batik" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Galeri'">
+          <div class="gallery-overlay">
+            <i class="bi bi-image"></i>
+            <span>Batik Tradisional</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="600">
+        <div class="gallery-card">
+          <img src="assets/gallery6.jpg" class="img-fluid" alt="Galeri Batik" onerror="this.src='https://placehold.co/400x300/8B1A1A/ffffff?text=Galeri'">
+          <div class="gallery-overlay">
+            <i class="bi bi-image"></i>
+            <span>Koleksi Nusantara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONI ================= -->
+<section id="testimoni" class="section-pad testimonial-section">
+  <div class="container">
+    <div class="section-title" data-aos="fade-down">
+      <span class="section-tag">TESTIMONI</span>
+      <h2>Apa Kata <span class="text-warning">Pelanggan</span></h2>
+      <p>Pengalaman pelanggan bersama Batik Nusantara.</p>
+    </div>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="testimonial-card" data-aos="fade-up">
+            <div class="testimonial-header">
+              <img src="assets/avatar1.jpg" class="avatar img-fluid rounded-circle" alt="Andi Pratama" onerror="this.src='https://ui-avatars.com/api/?name=Andi+Pratama&size=80&background=8B1A1A&color=fff'">
+              <div>
+                <h5>Andi Pratama</h5>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <p>"Batiknya sangat bagus dan kualitas kainnya nyaman dipakai. Motifnya juga terlihat elegan."</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="testimonial-card" data-aos="fade-up">
+            <div class="testimonial-header">
+              <img src="assets/avatar2.jpg" class="avatar img-fluid rounded-circle" alt="Sinta Maharani" onerror="this.src='https://ui-avatars.com/api/?name=Sinta+Maharani&size=80&background=8B1A1A&color=fff'">
+              <div>
+                <h5>Sinta Maharani</h5>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <p>"Motif batiknya cantik dan bahannya nyaman. Cocok dipakai untuk acara formal maupun santai."</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="testimonial-card" data-aos="fade-up">
+            <div class="testimonial-header">
+              <img src="assets/avatar3.jpg" class="avatar img-fluid rounded-circle" alt="Rina Permata" onerror="this.src='https://ui-avatars.com/api/?name=Rina+Permata&size=80&background=8B1A1A&color=fff'">
+              <div>
+                <h5>Rina Permata</h5>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <p>"Pelayanannya ramah dan proses pesan sangat mudah. Batiknya terlihat premium dan elegan."</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="section-pad faq-section">
+  <div class="container faq-container">
+    <div class="section-title" data-aos="fade-down">
+      <span class="section-tag">FAQ</span>
+      <h2>Pertanyaan yang Sering <span class="text-warning">Ditanyakan</span></h2>
+      <p>Punya pertanyaan tentang produk atau pemesanan Batik Nusantara? Kami siap membantu!</p>
+    </div>
+
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item" data-aos="fade-up">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            <i class="bi bi-question-circle me-3 text-warning"></i> Apa saja jenis batik yang tersedia?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Kami menyediakan berbagai jenis batik seperti Batik Parang, Batik Kawung, Batik Mega Mendung, dan masih banyak lagi dengan motif khas Nusantara.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            <i class="bi bi-cart-check me-3 text-warning"></i> Apakah bisa pesan secara online?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Ya! Anda dapat memesan secara online melalui WhatsApp kami. Cukup klik tombol "Pesan Sekarang" dan kami akan membantu proses pemesanan.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            <i class="bi bi-rulers me-3 text-warning"></i> Apakah tersedia berbagai ukuran?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Tersedia berbagai ukuran mulai dari S hingga XL. Jika Anda membutuhkan ukuran khusus, silakan hubungi kami untuk konsultasi.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            <i class="bi bi-credit-card me-3 text-warning"></i> Bagaimana cara melakukan pembayaran?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Kami menerima pembayaran melalui transfer bank (BCA, Mandiri, BNI), dan juga melalui e-wallet seperti OVO, GoPay, dan Dana.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KONTAK ================= -->
+<section id="kontak" class="section-pad contact-section">
+  <div class="container">
+    <div class="section-title" data-aos="fade-down">
+      <span class="section-tag">HUBUNGI KAMI</span>
+      <h2>Temukan Batik <span class="text-warning">Pilihanmu</span></h2>
+      <p>Siap tampil elegan dengan Batik Nusantara? Hubungi kami sekarang!</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="contact-card h-100">
+          <h4><i class="bi bi-person-lines-fill me-2 text-warning"></i>Informasi Kontak</h4>
+          <p>Ada pertanyaan? Jangan ragu untuk menghubungi kami.</p>
+
+          <div class="contact-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div><strong>Alamat</strong><br>Jl. Lempangang Bontomanai</div>
+          </div>
+
+          <div class="contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <div><strong>Telepon</strong><br>088219687504</div>
+          </div>
+
+          <div class="contact-item">
+            <i class="bi bi-whatsapp"></i>
+            <div><strong>WhatsApp</strong><br>088219687504</div>
+          </div>
+
+          <div class="contact-item">
+            <i class="bi bi-instagram"></i>
+            <div><strong>Instagram</strong><br>@batiknusantaraindonesia62</div>
+          </div>
+
+          <div class="contact-social mt-3">
+            <a href="https://wa.me/6288219687504" target="_blank" class="btn btn-success btn-lg w-100 rounded-pill fw-bold">
+              <i class="bi bi-whatsapp me-2"></i>Chat WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="map-card">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!4v1787790607113!6m8!1m7!1sssCbRd43cC0suz7ndnMh6g!2m2!1d-5.2321343356093!2d119.5175945235025!3f311.9685885667696!4f-5.707375022044758!5f0.7820865974627469" 
+                width="100%" 
+                height="100%" 
+                style="border:0; min-height:280px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="contact-card">
+              <h4><i class="bi bi-chat-dots-fill me-2 text-warning"></i>Kirim Pesan</h4>
+              <form id="contactForm" class="contact-form" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control form-control-lg" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+                    <div class="invalid-feedback">Nama wajib diisi.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="nama@email.com" required>
+                    <div class="invalid-feedback">Masukkan alamat email yang valid.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="pesan" class="form-label">Pesan</label>
+                    <textarea class="form-control" id="pesan" name="pesan" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+                    <div class="invalid-feedback">Pesan wajib diisi.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-warning btn-lg w-100 rounded-pill fw-bold">
+                      <i class="bi bi-send-fill me-2"></i>Kirim Pesan
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div id="formSuccess" class="alert alert-success mt-3 d-none" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                Pesan berhasil dikirim! Kami akan menghubungi Anda segera.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="footer-brand">
+          <img src="assets/logo.jpg" alt="Batik Nusantara" class="footer-logo" onerror="this.src='https://placehold.co/60x60/8B1A1A/ffffff?text=BN'">
+          <h3>Batik <span>Nusantara</span></h3>
+          <p>Keindahan Batik Indonesia dalam Setiap Karya</p>
+          <div class="social-icons">
+            <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/batiknusantaraindonesia62" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h5>Navigasi</h5>
+        <div class="footer-nav">
+          <a href="#home">Home</a>
+          <a href="#koleksi">Koleksi Batik</a>
+          <a href="#tentang">Tentang Kami</a>
+          <a href="#galeri">Galeri</a>
+          <a href="#testimoni">Testimoni</a>
+          <a href="#faq">FAQ</a>
+          <a href="#kontak">Kontak</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h5>Hubungi Kami</h5>
+        <div class="footer-contact">
+          <p><i class="bi bi-whatsapp"></i> 088219687504</p>
+          <p><i class="bi bi-instagram"></i> @batiknusantaraindonesia62</p>
+          <p><i class="bi bi-geo-alt"></i> Jl. Lempangang Bontomanai</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Batik Nusantara. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MODAL DETAIL PRODUK ================= -->
+<div class="modal fade" id="productDetailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content product-detail-modal">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-box-seam me-2 text-warning"></i>Detail Produk</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-5">
+            <img id="productDetailImage" src="" alt="Produk" class="img-fluid rounded-4 product-detail-image">
+          </div>
+          <div class="col-md-7">
+            <h3 id="productDetailName" class="product-detail-name">Nama Produk</h3>
+            <p id="productDetailCategory" class="product-detail-category">
+              <i class="bi bi-tag me-2"></i>Kategori
+            </p>
+            <div class="product-detail-price" id="productDetailPrice">Rp0</div>
+            <div id="productDetailDescription" class="product-detail-description">
+              Deskripsi produk akan tampil di sini.
+            </div>
+            <div class="product-detail-actions">
+              <a id="productDetailLink" href="#" target="_blank" class="btn btn-success btn-lg w-100 rounded-pill fw-bold">
+                <i class="bi bi-whatsapp me-2"></i>Pesan Sekarang via WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
